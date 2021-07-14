@@ -3,10 +3,10 @@
 	import Home from "./Home.svelte";
 	import Launch from "./Launch.svelte";
 
-	export let url = "";
+	//export let url = "";
 </script>
 
-<Router url={url}>
+<Router url="">
 	<Route path="/">
 		<Launch/>
 	</Route>

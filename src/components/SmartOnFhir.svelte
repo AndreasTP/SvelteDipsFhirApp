@@ -35,7 +35,7 @@
             </li>            
         {/if}    
     {:else}
-        <p>Loading SMART on Fhir context...</p>    
+        <p>Loading SMART on Fhir context...</p> 
     {/if}
 </ul>
 
