@@ -16,6 +16,7 @@
     "dev": "webpack serve --content-base public --port 9000"
   },
   "dependencies": {
+    "fhir.js": "0.0.22",
     "fhirclient": "^2.3.11",
     "svelte-pdf": "^1.0.9",
     "svelte-routing": "^1.5.0"

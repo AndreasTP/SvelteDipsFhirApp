@@ -99,24 +99,36 @@ Smart.ready()
                 client: client,
                 error: null
             };
-            fhir.set(newContext);})
+            fhir.set(newContext);
+            console.log(newContext.client);})
         //.then(data => init(data))
         .catch(console.error);
 
 //export const patient2 = writable(null);
-export const currentPatientId = "13116900216";  //Make this as store
+export const currentPatientId = writable("13116900216"); 
 
 export const patient2 = derived(
-    fhir,
-    ($fhir, set) => {
+    [fhir, currentPatientId],
+    ([$fhir, $currentPatientId], set) => {
         if ($fhir != null && $fhir.client != null)
         {   
-            console.log("Henter line danser");
-            let url = "Patient/"+ currentPatientId;
-            //currentPatientId.set("13116900216")
-            //console.log(currentPatientId);
-            console.log(url);
-            $fhir.client.request(url).then(data => {set(data); console.log(data)});
+            // console.log("Henter line danser");
+            // let url = "Patient/"+ $currentPatientId;
+            // console.log(url);
+            $fhir.client.request("patient/" + $currentPatientId).then(data => {set(data); console.log(data)});
+        }
+    }
+);
+
+export const allergies = derived(
+    [fhir, currentPatientId],
+    ([$fhir, $currentPatientId], set) => {
+        if ($fhir != null && $fhir.client != null)
+        {   
+            // console.log("Henter line danser");
+            // let url = "Patient/"+ $currentPatientId;
+            // console.log(url);
+            $fhir.client.request("https://vt-selecta-b.dips.local/DIPS-WebAPI/HL7/FHIR-R4/AllergyIntolerance?patient.identifier=urn%3Aoid%3A2.16.578.1.12.4.1.4.1%7C" + $currentPatientId + "&_profile=DIPSAdverseDrugReaction").then(data => {set(data); console.log(data)});
         }
     }
 );
