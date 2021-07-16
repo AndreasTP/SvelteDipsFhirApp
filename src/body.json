@@ -1,0 +1,225 @@
+{
+    "resourceType": "AllergyIntolerance",
+    "id": "eeeaabeee0000001011611",
+    "meta": {
+      "lastUpdated": "2021-07-16T11:42:00+02:00",
+      "profile": [
+        "DIPSAdverseDrugReaction"
+      ],
+      "tag": [
+        {
+          "system": "http://dips.no/fhir/namingsystem/allergyintolerancesource",
+          "code": "drugreaction"
+        }
+      ]
+    },
+    "extension": [
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-ArenaStatus",
+        "valueString": "LastModified"
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-Severity",
+        "valueCoding": {
+          "system": "urn:oid:1.3.6.1.4.1.9038.52.4852",
+          "code": "1",
+          "display": "Alvorlig"
+        }
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-LastChangedById",
+        "valueId": "44"
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-LastChangedByName",
+        "valueHumanName": {
+          "text": "Kirurg, Kirsten, Testsykehuset Hf"
+        }
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-LastChangedTime",
+        "valueDateTime": "2021-07-16T11:42:00"
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-CreatedBy",
+        "valueHumanName": {
+          "text": "Kirurg, Kirsten, Testsykehuset Hf"
+        }
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-CreatedById",
+        "valueId": "44"
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-Source",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:1.3.6.1.4.1.9038.52.4846",
+              "code": "273761",
+              "display": "Resultat av tester/analyser"
+            },
+            {
+              "system": "urn:oid:2.16.578.1.12.4.1.1.7498",
+              "code": "2",
+              "display": "Resultat av tester/analyser"
+            }
+          ]
+        }
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-IssueWarning",
+        "valueBoolean": true
+      },
+      {
+        "url": "http://dips.no/fhir/StructureDefinition/DIPSCriticalInformationTopCategory",
+        "valueString": "Undefined"
+      }
+    ],
+    "identifier": [
+      {
+        "use": "usual",
+        "system": "http://dips.no/fhir/namingsystem/dips-fragmentid",
+        "value": "aabeee0000001011045"
+      }
+    ],
+    "clinicalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+          "code": "active",
+          "display": "Active"
+        }
+      ]
+    },
+    "verificationStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+          "code": "confirmed",
+          "display": "Confirmed"
+        }
+      ]
+    },
+    "category": [
+      "medication"
+    ],
+    "criticality": "high",
+    "code": {
+      "coding": [
+        {
+          "system": "http://www.whocc.no/atc",
+          "code": "C01EB16",
+          "display": "C01EB16"
+        },
+        {
+          "system": "http://www.whocc.no/atc",
+          "code": "M01AE01",
+          "display": "M01AE01"
+        },
+        {
+          "system": "http://www.whocc.no/atc",
+          "code": "M02AA13",
+          "display": "M02AA13"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-SubstanceIdentifier",
+              "valueIdentifier": {
+                "use": "usual",
+                "system": "http://dips.no/fhir/namingsystem/dips-ingredientid",
+                "value": "ID_ECA56300-5E51-4152-913D-A2EA6E83AD72"
+              }
+            }
+          ],
+          "system": "http://ehelse.no/FESTSubstance",
+          "code": "ok",
+          "display": "ok"
+        }
+      ],
+      "text": "ok"
+    },
+    "patient": {
+      "reference": "Patient/cdp1000813",
+      "identifier": {
+        "use": "official",
+        "system": "urn:oid:2.16.578.1.12.4.1.4.1",
+        "value": "13116900216"
+      }
+    },
+    "recordedDate": "2021-07-05T09:23:00",
+    "recorder": {
+      "reference": "PractitionerRole/agb44",
+      "identifier": {
+        "use": "official",
+        "system": "urn:oid:1.3.6.1.4.1.9038.51.1",
+        "value": "44"
+      },
+      "display": "Kirurg, Kirsten, Testsykehuset Hf"
+    },
+    "asserter": {
+      "reference": "PractitionerRole/agb44",
+      "identifier": {
+        "use": "official",
+        "system": "urn:oid:1.3.6.1.4.1.9038.51.1",
+        "value": "44"
+      },
+      "display": "Kirurg, Kirsten, Testsykehuset Hf"
+    },
+    "note": [
+      {
+        "authorReference": {
+          "reference": "PractitionerRole/agb44",
+          "identifier": {
+            "use": "official",
+            "system": "urn:oid:1.3.6.1.4.1.9038.51.1",
+            "value": "44"
+          },
+          "display": "Kirurg, Kirsten, Testsykehuset Hf"
+        }
+      }
+    ],
+    "reaction": [
+      {
+        "substance": {
+          "extension": [
+            {
+              "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-CaveType",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "display": "Ingredient"
+                  }
+                ]
+              }
+            },
+            {
+              "url": "http://dips.no/fhir/StructureDefinition/DIPS-CriticalInformation-IsAdditiveReaction",
+              "valueBoolean": false
+            }
+          ],
+          "text": "ok"
+        },
+        "manifestation": [
+          {
+            "coding": [
+              {
+                "system": "urn:oid:2.16.578.1.12.4.1.1.7497",
+                "code": "2",
+                "display": "Blodtrykksfall"
+              },
+              {
+                "system": "urn:oid:1.3.6.1.4.1.9038.52.4850",
+                "code": "273773",
+                "display": "Blodtrykksfall"
+              }
+            ],
+            "text": "Blodtrykksfall"
+          }
+        ],
+        "description": "endringerrr",
+        "severity": "severe"
+      }
+    ]
+  }

@@ -3,14 +3,14 @@ import { oauth2 as Smart } from 'fhirclient';
 
 export const fhir = writable(null);
 
-// export const user = derived(
-//     fhir, 
-//     ($fhir, set) => {
-//         if ($fhir != null && $fhir.client != null)
-//         {
-//             $fhir.client.user.read().then(u => set(u));
-//         }
-//    });
+export const user = derived(
+    fhir, 
+    ($fhir, set) => {
+        if ($fhir != null && $fhir.client != null)
+        {
+            $fhir.client.user.read().then(u => set(u));
+        }
+   });
 
 // export const patient = derived(
 //     fhir,
@@ -100,13 +100,16 @@ Smart.ready()
                 error: null
             };
             fhir.set(newContext);
-            console.log(newContext.client);})
+            console.log(newContext.client);
+        })
         //.then(data => init(data))
         .catch(console.error);
 
 //export const patient2 = writable(null);
 export const currentPatientId = writable("13116900216"); 
 
+
+//Storing the patiet who belongs to the "currentPatientId"
 export const patient2 = derived(
     [fhir, currentPatientId],
     ([$fhir, $currentPatientId], set) => {
@@ -115,40 +118,40 @@ export const patient2 = derived(
             // console.log("Henter line danser");
             // let url = "Patient/"+ $currentPatientId;
             // console.log(url);
-            $fhir.client.request("patient/" + $currentPatientId).then(data => {set(data); console.log(data)});
+            $fhir.client.request("patient/" + $currentPatientId).then(data => {set(data); 
+              //  console.log(data)
+            });
         }
     }
 );
 
+
+//Storing all allergies to the current patient
 export const allergies = derived(
     [fhir, currentPatientId],
     ([$fhir, $currentPatientId], set) => {
         if ($fhir != null && $fhir.client != null)
         {   
-            // console.log("Henter line danser");
-            // let url = "Patient/"+ $currentPatientId;
-            // console.log(url);
-            $fhir.client.request("https://vt-selecta-b.dips.local/DIPS-WebAPI/HL7/FHIR-R4/AllergyIntolerance?patient.identifier=urn%3Aoid%3A2.16.578.1.12.4.1.4.1%7C" + $currentPatientId + "&_profile=DIPSAdverseDrugReaction").then(data => {set(data); console.log(data)});
+            $fhir.client.request("https://vt-selecta-b.dips.local/DIPS-WebAPI/HL7/FHIR-R4/AllergyIntolerance?patient.identifier=urn%3Aoid%3A2.16.578.1.12.4.1.4.1%7C" + $currentPatientId + "&_profile=DIPSAdverseDrugReaction").then(data => {set(data); 
+            console.log(data)
+        });
         }
     }
 );
 
-// export const patient2 = derived(
-//     fhir,
-//     ($fhir, set) => {
-//         if ($fhir != null && $fhir.client != null)
-//         {   
-//             console.log("Henter line danser");
-//             $fhir.client.request("Patient/13116900216").then(data => {set(data); console.log(data)});
-//         }
-//     }
-// );
+export const currentAllergyDescription = writable("13116900216"); 
 
-// function init(client) {
-//     let p = client;
-//     patient2.set(client);
-//     gender.set(client?.gender);
-//     familyName.set(client?.name[0]?.family);
-//     console.log("h: ", p);
-//     console.log("gender: ", gender);
-// }
+
+//Storing "C01EB16: Ibuprofen" with id:eeeaabeee0000001011611 (found in patient line danser-> id:13116900216 )
+export const changeableAllergy = derived(
+    [fhir,currentAllergyDescription],
+    ([$fhir,$currentAllergyDescription], set) => {
+        if ($fhir != null && $fhir.client != null)
+        {   
+            $fhir.client.request("https://vt-selecta-b.dips.local/DIPS-WebAPI/HL7/FHIR-R4/AllergyIntolerance/eeeaabeee0000001011611?_profile=DIPSAdverseDrugReaction").then(data => {set(data); 
+            //console.log(data)
+        });
+        }
+    }
+);
+
