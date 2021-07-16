@@ -139,7 +139,7 @@ export const allergies = derived(
     }
 );
 
-export const currentAllergyDescription = writable("13116900216"); 
+export const currentAllergyDescription = writable(null); 
 
 
 //Storing "C01EB16: Ibuprofen" with id:eeeaabeee0000001011611 (found in patient line danser-> id:13116900216 )
